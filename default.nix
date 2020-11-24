@@ -4,11 +4,14 @@ in  reflex-platform.project (i: {
   withHoogle = false;
 
   packages = {
+    frontend = ./frontend;
+    backend = ./backend;
+    common = ./common;
   };
 
   shells = {
-    ghc = [];
-    ghcjs = [];
+    ghc = ["frontend" "common" "backend"];
+    ghcjs = ["frontend" "common"];
   };
 
 })
