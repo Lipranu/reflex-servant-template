@@ -16,6 +16,7 @@ library
   build-depends:       base >=4.12 && <4.13
                      , common
                      , reflex-dom
+                     , servant-reflex
                      , text
 
 executable frontend
