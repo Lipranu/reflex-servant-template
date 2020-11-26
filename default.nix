@@ -1,5 +1,5 @@
 let reflex-platform = import ./reflex-platform.nix {};
-in  reflex-platform.project (i: {
+in  reflex-platform.project ({ pkgs, ... }: {
 
   withHoogle = false;
   useWarp = true;
@@ -15,4 +15,8 @@ in  reflex-platform.project (i: {
     ghcjs = ["frontend" "common"];
   };
 
+  
+  shellToolOverrides = self: super: {
+      cabal2nix = pkgs.haskellPackages.cabal2nix;
+  };
 })
