@@ -6,16 +6,14 @@ module Backend ( backend ) where
 import Common
 import Data.Proxy  ( Proxy )
 import Network.Wai ( Application )
-import Servant     ( Server, Raw, Proxy (..), (:<|>) (..)
+import Servant     ( Server, Proxy (..), (:<|>) (..)
                    , serve, serveDirectoryFileServer
                    )
 
-type Backend = API :<|> Raw
-
 backend :: Application
-backend = serve (Proxy @Backend) server
+backend = serve (Proxy @API) server
 
-server :: Server Backend
+server :: Server API
 server = update :<|> static
   where
     update = pure . (+1)
