@@ -14,9 +14,9 @@ backend :: Application
 backend = serve (Proxy @API) server
 
 server :: Server API
-server = update :<|> static
+server = get :<|> static
   where
-    update = pure . (+1)
+    get    = pure 10
     static = serveDirectoryFileServer
                "../dist-ghcjs/build/x86_64-linux/ghcjs-8.6.0.1/\
                \frontend-0.1.0.0/x/frontend/build/frontend/frontend.jsexe"
