@@ -17,6 +17,7 @@ library
                      , common
                      , reflex-dom
                      , servant-reflex
+                     , servant
                      , text
 
 executable frontend
