@@ -3,7 +3,7 @@
 
 module Common ( API ) where
 
-import Servant.API ( Get, JSON, ReqBody, Raw, (:>), (:<|>) )
+import Servant.API ( Get, JSON, Raw, (:>), (:<|>) )
 
-type API = "api" :> ReqBody '[JSON] Integer :> Get '[JSON] Integer
+type API = "api" :> Get '[JSON] Integer
   :<|> Raw
