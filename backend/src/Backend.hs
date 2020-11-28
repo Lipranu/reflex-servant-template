@@ -14,9 +14,10 @@ backend :: Application
 backend = serve (Proxy @API) server
 
 server :: Server API
-server = get :<|> static
+server = pingpong :<|> static
   where
-    get    = pure 10
+    pingpong Ping = pure Pong
+    pingpong Pong = pure Ping
     static = serveDirectoryFileServer
                "../dist-ghcjs/build/x86_64-linux/ghcjs-8.6.0.1/\
                \frontend-0.1.0.0/x/frontend/build/frontend/frontend.jsexe"
