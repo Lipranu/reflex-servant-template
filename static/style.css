@@ -1,0 +1,29 @@
+.layout {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    height: 40vh;
+    margin-bottom: 30vh;
+    margin-top: 30vh;
+    text-align: center;
+}
+
+.button {
+    width: 200px;
+    height: 100px;
+    border-radius: 25px;
+    font-size: 200%;
+    font-weight: bold;
+}
+
+.ping {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.pong {
+    background-color: silver;
+    border-color: silver;
+    color: black;
+}
