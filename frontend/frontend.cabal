@@ -26,6 +26,7 @@ executable frontend
   build-depends:       base >=4.12 && <4.13
                      , frontend
                      , reflex-dom
+                     , file-embed
 
 test-suite frontend-test
   main-is:             Spec.hs
