@@ -23,14 +23,20 @@ frontend :: forall m t
             , MonadHold t m
             )
          => m ()
-frontend = el "div" $ mdo
+frontend = divClass "layout" $ mdo
   let (pingpong :<|> _) = client (Proxy @API)
                                  (Proxy @m)
                                  (Proxy @())
                                  (constDyn $ BasePath "/")
-  text    <- holdDyn Ping result
+      mkClass x    = "class" =: ("button " <> toClass x) <> "type" =: "button"
+      toClass Ping = "ping"
+      toClass Pong = "pong"
+      toText  Ping = "PING"
+      toText  Pong = "PONG"
+  dPingPong <- holdDyn Ping result
   trigger <- do
-    (e, _) <- elAttr' "button" ("type" =: "button") $ display text
+    (e, _) <- elDynAttr' "button" (mkClass <$> dPingPong)
+      $ dynText $ toText <$> dPingPong
     pure $ domEvent Click e
-  result  <- fmapMaybe reqSuccess <$> pingpong (Right <$> text) trigger
+  result  <- fmapMaybe reqSuccess <$> pingpong (Right <$> dPingPong) trigger
   pure ()
